@@ -4,10 +4,10 @@ from django.db.models.fields.related import ForeignKey
 
 # Create your models here.
 
-class category(models.model):
-    name = models.CharField(max_length=30, primary_key=True)
+class Category(models.Model):
+    name = models.CharField(max_length=30, null=False, primary_key=True)
 
-class detail_category(models.model):
-    cid = models.CharField(max_length=30, primary_key=True)
-    name = models.ForeignKey("category.name", on_delete=CASCADE)
+class Detail_category(models.Model):
+    cid = models.CharField(max_length=30, null=False, primary_key=True)
+    name = models.ForeignKey("category.Category", on_delete=CASCADE)
     detail_name = models.CharField(max_length=30)

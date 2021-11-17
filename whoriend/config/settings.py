@@ -44,7 +44,22 @@ DJANGO_APPS = [
 # appName.apps.appNameConfig
 # ex) "users.apps.UsersConfig",
 PROJECT_APPS = [
-  
+  "category.apps.CategoryConfig",
+  "reviews.apps.ReviewsConfig",
+  "users.apps.UsersConfig",
+]
+
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+   # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -66,6 +81,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+#WSGI_APPLICATION = 'wsgi.application'
 
 
 # Database
@@ -96,14 +112,14 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
+ 
+ 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko'
 
-TIME_ZONE = 'Asiz/Seoul'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -120,9 +136,11 @@ STATIC_URL = '/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# AUTH_USER_MODEL = "users.User"  # <app명, clss명>
+AUTH_USER_MODEL = "users.MyUser"  # <app명, clss명>
+
+# MIDDLEWARE = MIDDLEWARE_CLASSES
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 
