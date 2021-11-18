@@ -10,6 +10,6 @@ class ReviewAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(models.Detail_category)
+@admin.register(models.Detail_Category)
 class Detail_categoryAdmin(admin.ModelAdmin):
     pass
