@@ -47,6 +47,7 @@ PROJECT_APPS = [
   "category.apps.CategoryConfig",
   "reviews.apps.ReviewsConfig",
   "users.apps.UsersConfig",
+  "fllowing.apps.FllowingConfig"
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
@@ -138,7 +139,7 @@ STATIC_URL = '/static/'
 
 # DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = "users.MyUser"  # <app명, clss명>
+AUTH_USER_MODEL = "users.User"  # <app명, clss명>
 
 # MIDDLEWARE = MIDDLEWARE_CLASSES
 
