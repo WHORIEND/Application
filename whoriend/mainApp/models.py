@@ -1,7 +1,20 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
+from . import managers
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db.models.fields import CharField, IntegerField
 from django.contrib.auth.models import PermissionsMixin
+from django.core.validators import MinValueValidator, MaxValueValidator
+# Create your models here.
+
+class TimeStampedModel(models.Model):
+
+    created = models.DateTimeField(null = True, auto_now_add=True)
+    updated = models.DateTimeField(null = True, auto_now=True)
+    objects = managers.CustomModelManager()
+
+    class Meta:
+        abstract = True
+
 
 # Create your models here.
 # Database의 형태를 보여줌
@@ -68,7 +81,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     gender = models.CharField(choices=GENDER_CHOICES, max_length=10, default=GENDER_FEMALE)
     age = models.IntegerField(default=20, null=True)
     country = models.CharField(choices=COUNTRY_CHOICES, max_length=20, blank=False, default="")
-    interest = models.ManyToManyField("category.Category") 
+    interest = models.ManyToManyField("Category") 
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
@@ -86,3 +99,31 @@ class User(AbstractBaseUser, PermissionsMixin):
     @property
     def is_staff(self):
         return self.is_admin
+    
+    
+class Review(models.Model):
+    review = models.TextField(null = True,blank=True)
+    time = models.IntegerField(null = True,validators=[MinValueValidator(1), MaxValueValidator(5)])
+    good_teach = models.IntegerField(null = True,validators=[MinValueValidator(1), MaxValueValidator(5)])
+    kind = models.IntegerField(null = True,validators=[MinValueValidator(1), MaxValueValidator(5)])
+    user = models.ForeignKey("User", related_name="reviews", on_delete=CASCADE)
+
+
+# Create your models here.
+
+class Category(main_models.TimeStampedModel):
+
+    """category model definition"""
+    name = models.CharField(max_length=30, null = True, unique=True)
+    id = models.AutoField
+    
+    def __str__(self):
+        return self.name
+
+class Detail_Category(main_models.TimeStampedModel):
+    category_name = models.ForeignKey(Category,db_column='name', on_delete=CASCADE)
+    detail_name = models.CharField(max_length=30, default="")
+    image = models.ImageField(null = True)
+
+    def __str__(self):
+        return self.detail_name

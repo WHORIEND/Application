@@ -44,10 +44,7 @@ DJANGO_APPS = [
 # appName.apps.appNameConfig
 # ex) "users.apps.UsersConfig",
 PROJECT_APPS = [
-  "category.apps.CategoryConfig",
-  "reviews.apps.ReviewsConfig",
-  "users.apps.UsersConfig",
-  "fllowing.apps.FllowingConfig"
+  "mainApp.app.MainAppConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
