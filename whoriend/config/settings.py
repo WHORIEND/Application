@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+
+import rest_framework
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,17 +39,27 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
 
 # THIRD_PARTY_APPS = ["django_countries"] 
 
 # appName.apps.appNameConfig
 # ex) "users.apps.UsersConfig",
+
 PROJECT_APPS = [
-  "mainApp.app.MainAppConfig",
+  "mainApp.apps.MainAppConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,7 +67,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-   # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    #    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -136,10 +148,12 @@ STATIC_URL = '/static/'
 
 # DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = "users.User"  # <app명, clss명>
+AUTH_USER_MODEL = "mainApp.User"  # <app명, clss명>
 
 # MIDDLEWARE = MIDDLEWARE_CLASSES
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 
 # MEDIA_URL = "/media/"
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

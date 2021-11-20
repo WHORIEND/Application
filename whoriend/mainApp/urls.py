@@ -1,6 +1,8 @@
 from django.urls import path
-from category import views as Category_View
+from .import views
 
-app_name = "main"
+app_name = "mainApp"
 
-urlpatterns = [path("", Category_View.CategoryView.as_view(), name = "category")]
+urlpatterns = [
+    path("", views.mainView.as_view()),
+]

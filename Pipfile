@@ -7,6 +7,8 @@ name = "pypi"
 django = "==3.2.7"
 flake8 = "*"
 django-countries = "*"
+djangorestframework = "*"
+django-rest-framework = "*"
 
 [dev-packages]
 

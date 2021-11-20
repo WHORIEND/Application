@@ -1,21 +1,9 @@
 from django.db import models
-from . import managers
+from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db.models.fields import CharField, IntegerField
 from django.contrib.auth.models import PermissionsMixin
 from django.core.validators import MinValueValidator, MaxValueValidator
-# Create your models here.
-
-class TimeStampedModel(models.Model):
-
-    created = models.DateTimeField(null = True, auto_now_add=True)
-    updated = models.DateTimeField(null = True, auto_now=True)
-    objects = managers.CustomModelManager()
-
-    class Meta:
-        abstract = True
-
-
 # Create your models here.
 # Database의 형태를 보여줌
 
@@ -44,7 +32,6 @@ class UserManager(BaseUserManager):
         user.is_admin = True
         user.save(using=self._db)
         return user
-    
 
 class User(AbstractBaseUser, PermissionsMixin):
     GENDER_MALE = "male"
@@ -111,7 +98,7 @@ class Review(models.Model):
 
 # Create your models here.
 
-class Category(main_models.TimeStampedModel):
+class Category(models.Model):
 
     """category model definition"""
     name = models.CharField(max_length=30, null = True, unique=True)
@@ -120,7 +107,7 @@ class Category(main_models.TimeStampedModel):
     def __str__(self):
         return self.name
 
-class Detail_Category(main_models.TimeStampedModel):
+class Detail_Category(models.Model):
     category_name = models.ForeignKey(Category,db_column='name', on_delete=CASCADE)
     detail_name = models.CharField(max_length=30, default="")
     image = models.ImageField(null = True)
