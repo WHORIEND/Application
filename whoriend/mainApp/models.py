@@ -70,6 +70,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     country = models.CharField(choices=COUNTRY_CHOICES, max_length=20, blank=False, default="")
     interest = models.ManyToManyField("Category") 
     objects = UserManager()
+    image = models.ImageField(null = True) #프로필 사진
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['date_of_birth']
