@@ -6,4 +6,6 @@ app_name = "mainApp"
 urlpatterns = [
     path("", views.mainView.as_view()),
     path("lan/", views.TeachableUserView.as_view()),
+    path("/login",views.login()),
+    path("/logout",views.login()),
 ]

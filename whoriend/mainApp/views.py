@@ -27,14 +27,21 @@ class TeachableUserView(APIView):
         #context = {"result" : queryset}
         return Response(serializers.data)
 
-#@api_view(['GET'])
-#def TeachableUserView(request):
-#    print('hello')
-#    if request == 'GET':
-#        #data = json.loads(request.body)
-#        #category = data['category']
-#        category = '언어'
-#        queryset = User.objects.filter(interest__category_name = category) #json형식으로 받은 카테고리만 걸러서 리턴
-#        serializers = TeachableUserSerializer(queryset)
-#        #context = {"result" : queryset}
-#        return Response(serializers.data)
+
+def login(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        email = data['email']
+        password = data['password']
+        user = authenticate(email=email, password=password)
+        if user is not None:
+            login(request, user) #session 에 login 정보 저장.
+            return Response(status=200)
+        else:
+            return Response(status=400)
+
+def logout(request):
+    if request.user.is_authenticated: # 로그인이 완료 됬다면.
+        return Response(status=200)
+    else:
+        return Response(status=400)

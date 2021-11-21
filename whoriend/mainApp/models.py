@@ -10,15 +10,15 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Model은 필드를 갖고있음 ex) 텍스트필드, 이메일필드 등등
 class UserManager(BaseUserManager):
-    def create_user(self, email, date_of_birth, password=None):
+    def create_user(self, email, date_of_birth, password=None, **extra_fields):
         if not email:
             raise ValueError('Users must have an email address')
 
         user = self.model(
             email=self.normalize_email(email),
             date_of_birth=date_of_birth,
+            **extra_fields
         )
-
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -100,7 +100,6 @@ class Review(models.Model):
 # Create your models here.
 
 class Category(models.Model):
-
     """category model definition"""
     name = models.CharField(max_length=30, null = True, unique=True)
     id = models.AutoField
