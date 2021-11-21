@@ -1,5 +1,6 @@
 from django.contrib import admin
 from . import models
+from . models import User
 # Register your models here.
 
 @admin.register(models.Category)
@@ -10,11 +11,9 @@ class CategoryAdmin(admin.ModelAdmin):
 class Detail_CategoryAdmin(admin.ModelAdmin):
     list_display = ['category_name', 'detail_name', 'image',]
 
-@admin.register(models.User)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ['date_of_birth', 'name', 'nickname', 
-                'gender', 'age', 'country','objects', ]
 
 @admin.register(models.Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ['review', 'time', 'good_teach', 'kind', 'user',]
+    
+admin.site.register(User)

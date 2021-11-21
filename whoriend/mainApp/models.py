@@ -115,3 +115,6 @@ class Detail_Category(models.Model):
 
     def __str__(self):
         return self.detail_name
+    
+class Community(models.Model):
+    username = models.ForeignKey(User)
