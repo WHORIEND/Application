@@ -1,4 +1,5 @@
 import json
+from django.db.models import query
 from django.http import response
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -11,18 +12,29 @@ from .serializers import *
 from .models import *
 # Create your views here.
 
-class mainView(ListAPIView):
-    queryset = Detail_Category.objects.all()
-    serializer_class = DetailCategorySerializer
+class mainView(APIView):
+    def get(self, request):
+        queryset = Detail_Category.objects.all()
+        serializers = DetailCategorySerializer(queryset, many=True)
+        return Response(serializers.data)
 
-@api_view(['GET'])
-def TeachableUserView(request):
-    print('hello')
-    if request == 'GET':
-        #data = json.loads(request.body)
-        #category = data['category']
-        category = '언어'
-        queryset = User.objects.filter(interest__category_name = category) #json형식으로 받은 카테고리만 걸러서 리턴
-        serializers = TeachableUserSerializer(queryset)
+class TeachableUserView(APIView):
+    def get(self, request):
+        queryset = User.objects.filter(interest__name__in = ['언어']) #json형식으로 받은 카테고리만 걸러서 리턴
+        for e in queryset:
+            print(e)
+        serializers = TeachableUserSerializer(queryset, many=True)
         #context = {"result" : queryset}
-        return Response(serializers)
+        return Response(serializers.data)
+
+#@api_view(['GET'])
+#def TeachableUserView(request):
+#    print('hello')
+#    if request == 'GET':
+#        #data = json.loads(request.body)
+#        #category = data['category']
+#        category = '언어'
+#        queryset = User.objects.filter(interest__category_name = category) #json형식으로 받은 카테고리만 걸러서 리턴
+#        serializers = TeachableUserSerializer(queryset)
+#        #context = {"result" : queryset}
+#        return Response(serializers.data)

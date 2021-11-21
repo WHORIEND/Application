@@ -109,7 +109,7 @@ class Category(models.Model):
         return self.name
 
 class Detail_Category(models.Model):
-    category_name = models.ForeignKey(Category,db_column='name', on_delete=CASCADE)
+    category_name = models.ForeignKey(Category, on_delete=CASCADE)
     detail_name = models.CharField(max_length=30, default="")
     image = models.ImageField(null = True)
 
@@ -117,4 +117,4 @@ class Detail_Category(models.Model):
         return self.detail_name
     
 class Community(models.Model):
-    username = models.ForeignKey(User)
+    username = models.ForeignKey(User, on_delete=CASCADE)
