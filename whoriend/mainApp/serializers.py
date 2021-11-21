@@ -10,3 +10,8 @@ class TeachableUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["nickname", "gender", "image"]
+
+class TeacherSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["pk", "name", "gender", "image"]

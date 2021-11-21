@@ -31,6 +31,9 @@ class TeachableUserView(APIView):
         serializers = TeachableUserSerializer(queryset, many=True)
         return Response(serializers.data)
 
+class TeacherView(RetrieveAPIView):
+    queryset = User.objects.filter(interest__name__in = ['언어']) #json형식으로 받은 카테고리만 걸러서 리턴
+    serializer_class = TeacherSerializer
 
 def login(request):
     if request.method == 'POST':
