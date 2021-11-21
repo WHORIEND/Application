@@ -68,7 +68,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     gender = models.CharField(choices=GENDER_CHOICES, max_length=10, default=GENDER_FEMALE)
     age = models.IntegerField(default=20, null=True)
     country = models.CharField(choices=COUNTRY_CHOICES, max_length=20, blank=False, default="")
-    interest = models.ManyToManyField("Category") 
+    teachable = models.ManyToManyField("Detail_Category") 
     objects = UserManager()
     image = models.ImageField(null = True) #프로필 사진
 

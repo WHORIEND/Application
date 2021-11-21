@@ -21,7 +21,7 @@ class mainView(APIView):
 
 class TeachableUserView(APIView):
     def get(self, request):
-        queryset = User.objects.filter(interest__name__in = ['언어']) #json형식으로 받은 카테고리만 걸러서 리턴
+        queryset = User.objects.filter(teachable__detail_name__in = ['작곡']) #json형식으로 받은 카테고리만 걸러서 리턴
         for e in queryset:
             print(e)
         serializers = TeachableUserSerializer(queryset, many=True)
