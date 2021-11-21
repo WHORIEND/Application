@@ -1,6 +1,8 @@
 import json
 from django.db.models import query
 from django.http import response
+from rest_framework.parsers import JSONParser
+from django.contrib.auth import authenticate, login
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http.response import JsonResponse
@@ -12,11 +14,14 @@ from .serializers import *
 from .models import *
 # Create your views here.
 
+
+
 class mainView(APIView):
     def get(self, request):
         queryset = Detail_Category.objects.all()
         serializers = DetailCategorySerializer(queryset, many=True)
         return Response(serializers.data)
+
 
 class TeachableUserView(APIView):
     def get(self, request):
@@ -24,7 +29,6 @@ class TeachableUserView(APIView):
         for e in queryset:
             print(e)
         serializers = TeachableUserSerializer(queryset, many=True)
-        #context = {"result" : queryset}
         return Response(serializers.data)
 
 
