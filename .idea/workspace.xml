@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96e954e6-618c-43bb-b9eb-d906a613229d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/whoreindGit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/whoreindGit.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whoriend/mainApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/whoriend/mainApp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whoriend/mainApp/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/whoriend/mainApp/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whoriend/mainApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/whoriend/mainApp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/whoriend/mainApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/whoriend/mainApp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +25,36 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/whoriend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Pipfile" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="whoreindGit" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ata97\anaconda3\envs\djangoTest\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/whoriend/mainApp" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/whoriend/mainApp/views.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.views" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -33,5 +66,16 @@
       <updated>1637465470222</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

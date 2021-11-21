@@ -1,8 +1,5 @@
 import json
-from django.db.models import query
 from django.http import response
-from rest_framework.parsers import JSONParser
-from django.contrib.auth import authenticate, login
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http.response import JsonResponse
@@ -13,7 +10,6 @@ from rest_framework.views import APIView
 from .serializers import *
 from .models import *
 # Create your views here.
-
 
 
 class mainView(APIView):
@@ -40,12 +36,24 @@ def login(request):
         data = JSONParser().parse(request)
         email = data['email']
         password = data['password']
-        user = authenticate(email=email, password=password)
+        user = authenticate(email='ata97@naver.com', password='1234')
         if user is not None:
+            print(1)
             login(request, user) #session 에 login 정보 저장.
-            return Response(status=200)
+            serializers = BasicUserSerializer(user)
+            return redirect('language/', serializers.data)
+               # Redirect(serializers.data, status=200)
         else:
-            return Response(status=400)
+            return Http404("Question does not exist")
+    if request.method == 'GET':
+        user = User.objects.filter(email='junic@naver.com')
+        serializers = BasicUserSerializer(user)
+        redirect('언어/', serializers.data)
+    user = User.objects.filter(email='junic@naver.com')
+    serializers = BasicUserSerializer(user)
+    return redirect('mainApp:language')
+
+
 
 def logout(request):
     if request.user.is_authenticated: # 로그인이 완료 됬다면.
